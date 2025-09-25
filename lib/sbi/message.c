@@ -3361,8 +3361,10 @@ static bool build_multipart(
     ogs_assert(http);
 
     ogs_random(digest, 16);
-    strcpy(boundary, "=-");
-    ogs_base64_encode_binary(boundary + 2, digest, 16);
+    strcpy(boundary, "bb");
+    for (i = 0; i < 16; i++) {
+        sprintf(boundary + 2 + (i * 2), "%02x", digest[i]);
+    }
 
     p = http->content = ogs_calloc(1, OGS_MAX_SDU_LEN);
     if (!p) {
