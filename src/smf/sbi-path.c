@@ -529,13 +529,25 @@ void smf_sbi_send_pdu_session_created_data(
 
     ogs_free(authorized_qos_rules.buffer);
 
+    uint8_t *tmp;
+    int full_len;
+
+    full_len = authorized_qos_flow_descriptions.length + 3; // 1 byte IEI + 2 bytes length
+    tmp = ogs_malloc(full_len);
+
+    tmp[0] = 0x79; // IEI for QoS Flow Setup List / Descriptions
+    tmp[1] = (authorized_qos_flow_descriptions.length >> 8) & 0xFF;
+    tmp[2] = authorized_qos_flow_descriptions.length & 0xFF;
+    memcpy(tmp + 3, authorized_qos_flow_descriptions.buffer,
+        authorized_qos_flow_descriptions.length);
+
     enc_len = ogs_base64_encode_len(
-            authorized_qos_flow_descriptions.length);
+            full_len);
     qosFlowSetupItem->qos_flow_description = ogs_calloc(1, enc_len);
     ogs_assert(qosFlowSetupItem->qos_flow_description);
     ogs_base64_encode(qosFlowSetupItem->qos_flow_description,
-            authorized_qos_flow_descriptions.buffer,
-            authorized_qos_flow_descriptions.length);
+            tmp,
+            full_len;
 
     ogs_free(authorized_qos_flow_descriptions.buffer);
 
