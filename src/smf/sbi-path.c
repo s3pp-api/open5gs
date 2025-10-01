@@ -547,7 +547,7 @@ void smf_sbi_send_pdu_session_created_data(
     ogs_assert(qosFlowSetupItem->qos_flow_description);
     ogs_base64_encode(qosFlowSetupItem->qos_flow_description,
             tmp,
-            full_len;
+            full_len);
 
     ogs_free(authorized_qos_flow_descriptions.buffer);
 
