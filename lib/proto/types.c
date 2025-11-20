@@ -173,7 +173,7 @@ char *ogs_home_network_domain_from_fqdn(char *fqdn)
 
     if (strlen(fqdn) <
         strlen(FQDN_5GC_MNC "XXX" FQDN_MCC "XXX" FQDN_3GPPNETWORK_ORG)) {
-        ogs_error(" FLAG ERROR 4")
+        ogs_error(" FLAG ERROR 4");
         return NULL;
     }
 
