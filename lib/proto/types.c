@@ -180,21 +180,21 @@ char *ogs_home_network_domain_from_fqdn(char *fqdn)
     p = fqdn + strlen(fqdn);
     if (strncmp(p - strlen(FQDN_3GPPNETWORK_ORG),
                 FQDN_3GPPNETWORK_ORG, strlen(FQDN_3GPPNETWORK_ORG)) != 0) {
-        ogs_error(" FLAG ERROR 5")
+        ogs_error(" FLAG ERROR 5");
         return NULL;
     }
 
     p -= (strlen(FQDN_3GPPNETWORK_ORG) + 3);
     if (strncmp(p - strlen(FQDN_MCC),
                 FQDN_MCC, strlen(FQDN_MCC)) != 0) {
-        ogs_error(" FLAG ERROR 6")
+        ogs_error(" FLAG ERROR 6");
         return NULL;
     }
 
     p -= (strlen(FQDN_MCC) + 3);
     if (strncmp(p - strlen(FQDN_5GC_MNC),
                 FQDN_5GC_MNC, strlen(FQDN_5GC_MNC)) != 0) {
-        ogs_error(" FLAG ERROR 7")
+        ogs_error(" FLAG ERROR 7");
         return NULL;
     }
 

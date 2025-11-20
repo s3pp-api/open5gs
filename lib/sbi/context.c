@@ -2904,10 +2904,12 @@ bool ogs_sbi_fqdn_in_vplmn(char *fqdn)
     ogs_assert(fqdn);
 
     if (ogs_local_conf()->num_of_serving_plmn_id == 0) {
+         ogs_error(" FLAG ERROR 1");
         return false;
     }
 
     if (ogs_home_network_domain_from_fqdn(fqdn) == NULL) {
+        ogs_error(" FLAG ERROR 2");
         return false;
     }
 
@@ -2922,6 +2924,7 @@ bool ogs_sbi_fqdn_in_vplmn(char *fqdn)
     }
 
     if (home_network == false)
+        ogs_error(" FLAG ERROR 3");
         return true;
 
     return false;
