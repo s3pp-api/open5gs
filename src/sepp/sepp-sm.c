@@ -104,7 +104,7 @@ void sepp_state_operational(ogs_fsm_t *s, sepp_event_t *e)
         CASE(OGS_SBI_SERVICE_NAME_NNRF_NFM)
             if (server->interface &&
                 strcmp(server->interface, OGS_SBI_INTERFACE_NAME_SEPP) == 0) {
-                ogs_error("[DROP] Peer SEPP is using the wrong interface[%s]",
+                ogs_error("[DROP] I5 Peer SEPP is using the wrong interface[%s]",
                         server->interface);
                 break;
             }
@@ -140,7 +140,7 @@ void sepp_state_operational(ogs_fsm_t *s, sepp_event_t *e)
             if (!server->interface &&
                 ogs_sbi_server_first_by_interface(
                     OGS_SBI_INTERFACE_NAME_SEPP)) {
-                ogs_error("[DROP] Peer SEPP is using the wrong interface[sbi]");
+                ogs_error("[DROP] I6 Peer SEPP is using the wrong interface[sbi]");
                 break;
             }
 
