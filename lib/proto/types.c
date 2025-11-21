@@ -170,6 +170,7 @@ char *ogs_home_network_domain_from_fqdn(char *fqdn)
     char *p = NULL;
 
     ogs_assert(fqdn);
+    ogs_info("fqdn  has value %s",fqdn);
 
     if (strlen(fqdn) <
         strlen(FQDN_5GC_MNC "XXX" FQDN_MCC "XXX" FQDN_3GPPNETWORK_ORG)) {
@@ -207,6 +208,8 @@ uint16_t ogs_plmn_id_mcc_from_fqdn(char *fqdn)
     char *p = NULL;
 
     ogs_assert(fqdn);
+    ogs_info("fqdn  has value %s",fqdn);
+
 
     p = ogs_home_network_domain_from_fqdn(fqdn);
     if (p == NULL) {
