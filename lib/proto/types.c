@@ -170,27 +170,33 @@ char *ogs_home_network_domain_from_fqdn(char *fqdn)
     char *p = NULL;
 
     ogs_assert(fqdn);
+    ogs_info("fqdn is %s",fqdn);
 
     if (strlen(fqdn) <
         strlen(FQDN_5GC_MNC "XXX" FQDN_MCC "XXX" FQDN_3GPPNETWORK_ORG)) {
+        ogs_info("T10");
         return NULL;
     }
 
     p = fqdn + strlen(fqdn);
     if (strncmp(p - strlen(FQDN_3GPPNETWORK_ORG),
                 FQDN_3GPPNETWORK_ORG, strlen(FQDN_3GPPNETWORK_ORG)) != 0) {
+        ogs_info("T11");
         return NULL;
     }
 
     p -= (strlen(FQDN_3GPPNETWORK_ORG) + 3);
     if (strncmp(p - strlen(FQDN_MCC),
                 FQDN_MCC, strlen(FQDN_MCC)) != 0) {
+        ogs_info("T12");
         return NULL;
+    
     }
 
     p -= (strlen(FQDN_MCC) + 3);
     if (strncmp(p - strlen(FQDN_5GC_MNC),
                 FQDN_5GC_MNC, strlen(FQDN_5GC_MNC)) != 0) {
+        ogs_info("T13");
         return NULL;
     }
 
@@ -215,6 +221,7 @@ uint16_t ogs_plmn_id_mcc_from_fqdn(char *fqdn)
     memcpy(mcc, p, 3);
     mcc[3] = 0;
 
+    ogs_info('mcc is %s',mcc);
     return atoi(mcc);
 }
 
@@ -235,7 +242,7 @@ uint16_t ogs_plmn_id_mnc_from_fqdn(char *fqdn)
 
     memcpy(mnc, p, 3);
     mnc[3] = 0;
-
+    ogs_info('mnc is %s',mnc);
     return atoi(mnc);
 }
 

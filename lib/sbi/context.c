@@ -2902,12 +2902,15 @@ bool ogs_sbi_fqdn_in_vplmn(char *fqdn)
     int i;
 
     ogs_assert(fqdn);
+    ogs_info("fqdn is %s",fqdn);
 
     if (ogs_local_conf()->num_of_serving_plmn_id == 0) {
+        ogs_info('T1');
         return false;
     }
 
     if (ogs_home_network_domain_from_fqdn(fqdn) == NULL) {
+        ogs_info('T2');
         return false;
     }
 
@@ -2916,12 +2919,14 @@ bool ogs_sbi_fqdn_in_vplmn(char *fqdn)
             ogs_plmn_id_mcc(&ogs_local_conf()->serving_plmn_id[i]) &&
             ogs_plmn_id_mnc_from_fqdn(fqdn) ==
             ogs_plmn_id_mnc(&ogs_local_conf()->serving_plmn_id[i])) {
+            ogs_info('T3');
             home_network = true;
             break;
         }
     }
 
     if (home_network == false)
+        ogs_info("T5");
         return true;
 
     return false;
