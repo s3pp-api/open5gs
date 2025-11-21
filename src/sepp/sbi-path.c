@@ -225,7 +225,7 @@ static int request_handler(ogs_sbi_request_t *request, void *data)
         }
 
         do_not_remove_custom_header = true;
-        ogs_info("headers.target_apiroot" is %s",headers.target_apiroot);
+        ogs_info("headers.target_apiroot is %s",headers.target_apiroot);
         if (ogs_sbi_fqdn_in_vplmn(headers.target_apiroot) == true) {
             uint16_t mcc = 0, mnc = 0;
 
