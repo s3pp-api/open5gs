@@ -228,7 +228,7 @@ static int request_handler(ogs_sbi_request_t *request, void *data)
         ogs_info("headers.target_apiroot is %s",headers.target_apiroot);
         if (ogs_sbi_fqdn_in_vplmn(headers.target_apiroot) == true) {
             uint16_t mcc = 0, mnc = 0;
-
+            ogs_info("I0");
             if (server->interface) {
                 ogs_error("[DROP] I1 Peer SEPP is using "
                         "the wrong interface[%s]", server->interface);
