@@ -225,12 +225,12 @@ static int request_handler(ogs_sbi_request_t *request, void *data)
         }
 
         do_not_remove_custom_header = true;
-
+        ogs_info("headers.target_apiroot" is %s",headers.target_apiroot);
         if (ogs_sbi_fqdn_in_vplmn(headers.target_apiroot) == true) {
             uint16_t mcc = 0, mnc = 0;
 
             if (server->interface) {
-                ogs_error("[DROP] Peer SEPP is using "
+                ogs_error("[DROP] I1 Peer SEPP is using "
                         "the wrong interface[%s]", server->interface);
                 sepp_assoc_remove(assoc);
                 return OGS_ERROR;
@@ -281,7 +281,7 @@ static int request_handler(ogs_sbi_request_t *request, void *data)
                             OGS_SBI_INTERFACE_NAME_SEPP) ||
                     ogs_sbi_server_first_by_interface(
                             OGS_SBI_INTERFACE_NAME_N32F)) {
-                    ogs_error("[DROP] Peer SEPP is using "
+                    ogs_error("[DROP] I2 Peer SEPP is using "
                             "the wrong interface[%s]", server->interface);
                     sepp_assoc_remove(assoc);
                     return OGS_ERROR;
@@ -291,7 +291,7 @@ static int request_handler(ogs_sbi_request_t *request, void *data)
                             OGS_SBI_INTERFACE_NAME_SEPP) == 0) {
                     if (ogs_sbi_server_first_by_interface(
                                 OGS_SBI_INTERFACE_NAME_N32F)) {
-                        ogs_error("[DROP] Peer SEPP is using "
+                        ogs_error("[DROP] I3 Peer SEPP is using "
                                 "the wrong interface[%s]", server->interface);
                         sepp_assoc_remove(assoc);
                         return OGS_ERROR;
@@ -392,7 +392,7 @@ static int request_handler(ogs_sbi_request_t *request, void *data)
 
     if (server->interface &&
         strcmp(server->interface, OGS_SBI_INTERFACE_NAME_N32F) == 0) {
-        ogs_error("[DROP] Peer SEPP is using the wrong interface[%s]",
+        ogs_error("[DROP] I4 Peer SEPP is using the wrong interface[%s]",
                 server->interface);
         return OGS_ERROR;
     }

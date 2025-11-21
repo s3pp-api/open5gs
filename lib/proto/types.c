@@ -221,7 +221,7 @@ uint16_t ogs_plmn_id_mcc_from_fqdn(char *fqdn)
     memcpy(mcc, p, 3);
     mcc[3] = 0;
 
-    ogs_info('mcc is %s',mcc);
+    ogs_info("mcc is %s",mcc);
     return atoi(mcc);
 }
 
@@ -242,7 +242,7 @@ uint16_t ogs_plmn_id_mnc_from_fqdn(char *fqdn)
 
     memcpy(mnc, p, 3);
     mnc[3] = 0;
-    ogs_info('mnc is %s',mnc);
+    ogs_info("mnc is %s",mnc);
     return atoi(mnc);
 }
 
